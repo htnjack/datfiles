@@ -67,11 +67,6 @@ function _M.get(globalkeys)
                 { description = "toggle focused client on tag #" .. i, group = "tag" }),
 
             --  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-            --  Rofi
-            awful.key({ modkey }, "r", function()
-                    awful.spawn("rofi -show run")
-                end,
-                { description = "rofi run menu", group = "rofi" }),
         )
     end
 
