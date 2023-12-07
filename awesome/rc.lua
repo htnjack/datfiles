@@ -77,3 +77,6 @@ awful.rules.rules = main.rules(
 
 -- Signals
 require("main.signals")
+
+-- Run utilities
+awful.spawn.with_shell("~/.config/awesome/autorun.sh")
