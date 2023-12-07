@@ -15,6 +15,11 @@ require('lazy').setup({
     -- Mason for managing LSP servers
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
+    {
+        'numToStr/Comment.nvim',
+        opts = {},
+        lazy = false,
+    },
     -- LSP Support
     {
         'VonHeikemen/lsp-zero.nvim',
