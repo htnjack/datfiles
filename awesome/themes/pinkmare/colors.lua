@@ -13,7 +13,7 @@ _M = {
     bg3 = '#f2448b',
     fg = '#FAE8B6',
     red = '#FF38A2',
-    gold = '#fff0f5',
+    white = '#fff0f5',
 }
 
 return _M

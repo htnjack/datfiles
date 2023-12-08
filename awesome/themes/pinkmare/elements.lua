@@ -48,7 +48,7 @@ theme.titlebar_fg_focus    = colors.red
 
 -- theme.tooltip_font         = "Iosevka NF 8"
 -- theme.tooltip_opacity      = 0.9
--- theme.tooltip_fg_color     = gmc.gold
+-- theme.tooltip_fg_color     = gmc.white
 -- theme.tooltip_bg_color     = gmc.red
 -- theme.tooltip_border_width = dpi(2)
 -- theme.tooltip_border_color = gmc.bg2
