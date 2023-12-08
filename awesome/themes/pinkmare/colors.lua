@@ -6,7 +6,7 @@ local _M = {}
 
 -- Associative Array (Hash)
 
-_M.color = {
+_M = {
     bg0 = '#202330',
     bg1 = '#242021',
     bg2 = '#472541',
