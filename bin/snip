@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Script to interactively select a region and copy it to the clipboard, like
+# the snipping tool on Windows.
+
+log_file=/home/jack/.config/snip/err.log
+
+file=/home/jack/.cache/$(uuidgen)-snip.png
+scrot -s $file 2&> $log_file
+xclip -selection clipboard -t image/png -i $file 2&> $log_file
+rm $file 2&> $log_file
