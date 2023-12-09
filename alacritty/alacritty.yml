@@ -1,0 +1,57 @@
+# Font configuration (changes require restart)
+shell:
+  program: /bin/fish
+
+env:
+  TERM: xterm-256color
+
+font:
+    size: 8
+    # Normal (roman) font face
+    normal:
+        family: Iosevka NF
+        style: Regular
+
+    # Bold font face
+    bold:
+        family: Iosevka NF
+        style: Bold
+
+    # Italic font face
+    italic:
+        family: Iosevka NF
+        style: Italic
+
+    offset:
+      y: 1
+
+window:
+    opacity: 0.9
+
+colors:
+  # Default colors
+  primary:
+    background: '0x202330'
+    foreground: '0xfae8b6'
+
+  # Normal colors
+  normal:
+    black:   '0xFAE8B6'
+    red:     '0xff38a2'
+    green:   '0x9cd162'
+    yellow:  '0xffc85b'
+    blue:    '0xeba4ac'
+    magenta: '0xd9bcef'
+    cyan:    '0x87c095'
+    white:   '0xfff0f5'
+
+  # Bright colors
+  bright:
+    black:   '0xFAE8B6'
+    red:     '0xff38a2'
+    green:   '0x9cd162'
+    yellow:  '0xffc85b'
+    blue:    '0xeba4ac'
+    magenta: '0xd9bcef'
+    cyan:    '0x87c095'
+    white:   '0xfff0f5'
