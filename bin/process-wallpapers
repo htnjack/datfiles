@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Iterate through each file in the directory
+for file in *; do
+    # Check if the file name contains the specified suffix
+    if [[ "$file" == *.jpg ]]; then
+        # TODO: skip if resized already
+        echo "Resizing $file"
+        convert $file -resize 1920x1080 $file.resized
+        rm $file
+    fi
+done
+
