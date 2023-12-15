@@ -1,7 +1,5 @@
--- {{{ Required libraries
 local gears = require("gears")
 local awful = require("awful")
--- }}}
 
 local _M = {}
 

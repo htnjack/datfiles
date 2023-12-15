@@ -18,11 +18,10 @@ theme.fg_focus             = colors.fg3
 theme.fg_urgent            = colors.fg0
 theme.fg_minimize          = colors.fg0
 
-theme.useless_gap          = dpi(0)
-theme.border_width         = dpi(1)
-
-theme.border_normal        = colors.bg3
-theme.border_focus         = colors.fg3
+theme.useless_gap          = dpi(4)
+theme.border_width         = dpi(2)
+theme.border_normal        = colors.bg1
+theme.border_focus         = colors.bg3
 theme.border_marked        = colors.bg3
 
 theme.taglist_bg_urgent    = colors.bg3

@@ -1,11 +1,7 @@
--- Standard awesome library
 local gears            = require("gears")
 local awful            = require("awful")
-
--- Wibox handling library
 local wibox            = require("wibox")
 
--- Custom Local Library: Common Functional Decoration
 local deco             = {
     wallpaper = require("deco.wallpaper"),
     taglist   = require("deco.taglist"),
@@ -15,12 +11,8 @@ local deco             = {
 local taglist_buttons  = deco.taglist()
 local tasklist_buttons = deco.tasklist()
 
-local _M               = {}
-
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
--- {{{ Wibar
--- Create a textclock widget
 mytextclock            = wibox.widget.textclock()
 
 awful.screen.connect_for_each_screen(function(s)
@@ -55,7 +47,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 30 })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -67,7 +59,7 @@ awful.screen.connect_for_each_screen(function(s)
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
-        {         -- Right widgets
+        {             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
