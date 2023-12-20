@@ -1,6 +1,6 @@
 require('lazy').setup({
     -- development
-    { dir = "/home/jack/dev/pinky/nvim" },
+    -- { dir = "/home/jack/dev/pinky/nvim" },
     { 'rose-pine/neovim',                 name = 'rose-pine' },
     -- colorschemes
     { 'matsuuu/pinkmare' },
@@ -47,7 +47,16 @@ require('lazy').setup({
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
     -- harpoon
-    { 'ThePrimeagen/harpoon' },
+    {
+        'ThePrimeagen/harpoon',
+        branch = "harpoon2",
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require("harpoon").setup()
+        end
+    },
     -- fugitive
     { 'tpope/vim-fugitive' },
+    -- undotree
+    { 'mbbill/undotree' },
 })
