@@ -13,7 +13,10 @@ local tasklist_buttons = deco.tasklist()
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-mytextclock            = wibox.widget.textclock()
+local clock_widget     = require("widgets.clock")
+local separator_widget = require("widgets.separator")
+local battery_widget   = require("widgets.battery")
+
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -43,7 +46,8 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        buttons = tasklist_buttons,
+        bg      = theme.bg_normal
     }
 
     -- Create the wibox
@@ -54,16 +58,17 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            -- RC.launcher,
             s.mytaglist,
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
         {             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
             wibox.widget.systray(),
-            mytextclock,
+            separator_widget,
+            battery_widget {},
+            separator_widget,
+            clock_widget,
             s.mylayoutbox,
         },
     }

@@ -9,7 +9,6 @@ RC.vars = require("main.user-variables")
 
 require("main.signals")
 require("main.error-handling")
-require("deco.statusbar")
 
 RC.theme = require("main.theme")
 RC.layouts = require("main.layouts")
@@ -32,6 +31,8 @@ awful.rules.rules = RC.rules(
     binding.clientkeys(),
     binding.clientbuttons()
 )
+
+require("deco.statusbar")
 
 RC.layouts = RC.layouts()
 RC.tags = RC.tags()
