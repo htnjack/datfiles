@@ -5,13 +5,12 @@ require('lazy').setup({
     -- colorschemes
     { 'matsuuu/pinkmare' },
     { 'xiyaowong/transparent.nvim' },
-    -- autoclose pairs
-    { 'Raimondi/delimitMate' },
     -- color preview
     { 'norcalli/nvim-colorizer.lua' },
     -- treesitter
     { "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate" },
     { "nvim-treesitter/playground" },
+    { "nvim-treesitter/nvim-treesitter-context" },
     -- Mason for managing LSP servers
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
@@ -59,4 +58,5 @@ require('lazy').setup({
     { 'tpope/vim-fugitive' },
     -- undotree
     { 'mbbill/undotree' },
+    { 'github/copilot.vim' },
 })
