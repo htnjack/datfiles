@@ -12,7 +12,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-    vim.keymap.set({ 'n', 'x' }, 'gq', function()
+    vim.keymap.set({ 'n', 'x' }, '<leader>f', function()
         vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
     end, opts)
 end
