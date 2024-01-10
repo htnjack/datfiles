@@ -1,4 +1,5 @@
 set fish_greeting
+
 abbr -a fsc nvim ~/.config/fish/config.fish
 abbr -a c cargo
 abbr -a g git
@@ -15,5 +16,7 @@ else
 	abbr -a lll 'ls -la'
 end
 
-bind \cf "~/bin/tmux-sessionizer"
+bind \cf "tmux-sessionizer"
 
+pyenv init - | source
+pyenv virtualenv-init - | source

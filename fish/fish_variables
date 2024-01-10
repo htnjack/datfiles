@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export PYENV_ROOT:/home/jack/\x2epyenv
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
@@ -30,4 +31,4 @@ SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR --export fish_tmux_config:/home/jack/\x2econfig/tmux\x2econf
-SETUVAR fish_user_paths:/home/jack/bin
+SETUVAR fish_user_paths:/home/jack/\x2epyenv/bin\x1e/home/jack/bin\x1e/home/jack/\x2ecargo/bin\x1e/home/jack/\x2elocal/bin

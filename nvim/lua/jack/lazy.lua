@@ -1,7 +1,6 @@
 require('lazy').setup({
     -- development
     -- { dir = "/home/jack/dev/pinky/nvim" },
-    { 'rose-pine/neovim',                 name = 'rose-pine' },
     -- colorschemes
     { 'matsuuu/pinkmare' },
     { 'xiyaowong/transparent.nvim' },
@@ -39,23 +38,6 @@ require('lazy').setup({
             { 'L3MON4D3/LuaSnip' }
         },
     },
-    -- telescope
-    {
-        'nvim-telescope/telescope.nvim',
-        tag = '0.1.4',
-        dependencies = { 'nvim-lua/plenary.nvim' }
-    },
-    -- harpoon
-    {
-        'ThePrimeagen/harpoon',
-        branch = "harpoon2",
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        config = function()
-            require("harpoon").setup()
-        end
-    },
-    -- fugitive
-    { 'tpope/vim-fugitive' },
     -- undotree
     { 'mbbill/undotree' },
     { 'github/copilot.vim' },
