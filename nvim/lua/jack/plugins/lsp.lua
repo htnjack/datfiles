@@ -1,4 +1,5 @@
 local on_attach = function(client, bufnr)
+
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -29,6 +30,7 @@ return {
         'saadparwaiz1/cmp_luasnip',
         "jose-elias-alvarez/null-ls.nvim",
         "nvim-lua/plenary.nvim",
+        'github/copilot.vim',
     },
     config = function()
         local cmp = require("cmp")
@@ -83,10 +85,11 @@ return {
             },
             mapping = cmp.mapping.preset.insert({
                 ['<CR>'] = cmp.mapping.confirm({ select = false }),
+                ['<C-y>'] = cmp.mapping.confirm({ select = false }),
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
+                ['<S-Tab>'] = nil,
+                ['<Tab>'] = nil,
                 ['<C-Space>'] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
