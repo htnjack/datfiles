@@ -1,5 +1,5 @@
 local on_attach = function(client, bufnr)
-
+    vim.notify("Attaching LSP " .. vim.inspect(client.name))
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -31,8 +31,34 @@ return {
         "jose-elias-alvarez/null-ls.nvim",
         "nvim-lua/plenary.nvim",
         'github/copilot.vim',
+        'rcarriga/nvim-notify',
     },
     config = function()
+        local n = require("notify")
+        n.setup({
+            {
+                background_colour = "NotifyBackground",
+                fps = 30,
+                icons = {
+                    DEBUG = "",
+                    ERROR = "",
+                    INFO = "",
+                    TRACE = "✎",
+                    WARN = ""
+                },
+                level = 2,
+                minimum_width = 50,
+                render = "minimal",
+                stages = "fade_in_slide_out",
+                time_formats = {
+                    notification = "%T",
+                    notification_history = "%FT%T"
+                },
+                timeout = 5000,
+                top_down = true
+            }
+        })
+        vim.notify = n.notify
         local cmp = require("cmp")
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
@@ -40,11 +66,35 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
-                'lua_ls', 'rust_analyzer', 'pyright'
+                'lua_ls', 'rust_analyzer', 'pyright', 'html', 'gopls', 'html', 'htmx', 'ocamllsp'
             },
             handlers = {
                 function(server_name)
                     require("lspconfig")[server_name].setup({ capabilities = capabilities, on_attach = on_attach })
+                end,
+                ["ocamllsp"] = function()
+                    require("lspconfig").ocamllsp.setup({
+                        on_attach = on_attach,
+                        capabilities = capabilities,
+                        filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
+                        get_language_id = function(_, ftype)
+                            return ftype
+                        end,
+                    })
+                end,
+                ["htmx"] = function()
+                    require("lspconfig").html.setup({
+                        on_attach = on_attach,
+                        capabilities = capabilities,
+                        filetypes = { "html", "templ" },
+                    })
+                end,
+                ["html"] = function()
+                    require("lspconfig").html.setup({
+                        on_attach = on_attach,
+                        capabilities = capabilities,
+                        filetypes = { "html", "templ" },
+                    })
                 end,
                 ["pyright"] = function()
                     local null_ls = require("null-ls")

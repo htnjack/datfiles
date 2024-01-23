@@ -29,3 +29,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+vim.diagnostic.config({ severity_sort = true })
+vim.filetype.add({ extension = { templ = "templ" } })
+
