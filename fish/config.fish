@@ -20,3 +20,6 @@ bind \cf "tmux-sessionizer"
 
 pyenv init - | source
 pyenv virtualenv-init - | source
+
+# opam configuration
+source /home/jack/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
