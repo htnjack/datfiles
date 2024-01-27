@@ -35,6 +35,7 @@ function _M.get(clientkeys, clientbuttons)
                     "DTA",   -- Firefox addon DownThemAll.
                     "copyq", -- Includes session name in class.
                     "pinentry",
+                    "pavucontrol",
                 },
                 class = {
                     "Arandr",
@@ -71,7 +72,7 @@ function _M.get(clientkeys, clientbuttons)
                 type = { "normal", "dialog" }
             },
             properties = {
-                titlebars_enabled = true
+                titlebars_enabled = false
             }
         },
 

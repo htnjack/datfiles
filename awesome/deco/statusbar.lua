@@ -2,14 +2,7 @@ local gears            = require("gears")
 local awful            = require("awful")
 local wibox            = require("wibox")
 
-local deco             = {
-    wallpaper = require("deco.wallpaper"),
-    taglist   = require("deco.taglist"),
-    tasklist  = require("deco.tasklist")
-}
-
-local taglist_buttons  = deco.taglist()
-local tasklist_buttons = deco.tasklist()
+wallpaper              = require("deco.wallpaper")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -20,7 +13,7 @@ local battery_widget   = require("widgets.battery")
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
-    set_wallpaper(s)
+    wallpaper.set(s)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -37,24 +30,22 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
-        screen  = s,
-        filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
+        screen = s,
+        filter = awful.widget.taglist.filter.all,
     }
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons,
-        bg      = theme.bg_normal
+        screen = s,
+        -- filter  = awful.widget.tasklist.filter.currenttags,
+        bg     = theme.bg_normal
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 30 })
+    s.mywibar = awful.wibar({ position = "bottom", screen = s, height = 20 })
 
     -- Add widgets to the wibox
-    s.mywibox:setup {
+    s.mywibar:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,

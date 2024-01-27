@@ -107,6 +107,8 @@ function _M.get()
 
         --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         -- Prompt
+        awful.key({ modkey, "Shift" }, "s", function() awful.spawn("/home/jack/bin/snip") end,
+            { description = "rofi windows menu", group = "rofi" }),
         awful.key({ modkey }, "w", function() awful.spawn("rofi -show window") end,
             { description = "rofi windows menu", group = "rofi" }),
         awful.key({ modkey }, "r", function() awful.spawn("rofi -show run") end,
