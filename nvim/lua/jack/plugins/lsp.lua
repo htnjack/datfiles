@@ -1,5 +1,4 @@
 local on_attach = function(client, bufnr)
-    vim.notify("Attaching LSP " .. vim.inspect(client.name))
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -54,7 +53,7 @@ return {
                     notification = "%T",
                     notification_history = "%FT%T"
                 },
-                timeout = 5000,
+                timeout = 4000,
                 top_down = true
             }
         })
@@ -66,7 +65,7 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
-                'lua_ls', 'rust_analyzer', 'pyright', 'html', 'gopls', 'html', 'htmx', 'ocamllsp'
+                'lua_ls', 'rust_analyzer', 'pyright', 'html', 'gopls', 'html', 'htmx', 'ocamllsp', 'vimls', 'yamlls',
             },
             handlers = {
                 function(server_name)
