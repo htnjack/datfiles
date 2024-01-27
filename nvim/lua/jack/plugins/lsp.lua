@@ -30,34 +30,8 @@ return {
         "jose-elias-alvarez/null-ls.nvim",
         "nvim-lua/plenary.nvim",
         'github/copilot.vim',
-        'rcarriga/nvim-notify',
     },
     config = function()
-        local n = require("notify")
-        n.setup({
-            {
-                background_colour = "NotifyBackground",
-                fps = 30,
-                icons = {
-                    DEBUG = "",
-                    ERROR = "",
-                    INFO = "",
-                    TRACE = "✎",
-                    WARN = ""
-                },
-                level = 2,
-                minimum_width = 50,
-                render = "minimal",
-                stages = "fade_in_slide_out",
-                time_formats = {
-                    notification = "%T",
-                    notification_history = "%FT%T"
-                },
-                timeout = 4000,
-                top_down = true
-            }
-        })
-        vim.notify = n.notify
         local cmp = require("cmp")
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
