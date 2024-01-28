@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# check tmux-sessionizer cmd is available
+if ! command -v tmux-sessionizer &> /dev/null; then
+    echo "tmux-sessionizer could not be found"
+    exit
+fi
+
+hare_dir="$HOME/dev/hare.nvim"
+
+if [ ! -d "$hare_dir" ]; then
+    echo "hare directory not found"
+    exit
+fi
+
+# tmux-sessionizer -d "$hare_dir" -s hare -c "nvim -c 'cd $hare_dir'"
+tmux-sessionizer $hare_dir
