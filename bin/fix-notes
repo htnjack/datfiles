@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Fix links in md files, links formatted as [](link)text are turned [text](link)
+# [](https://ocaml.org/docs/values-and-functions#defining-global-functions)Defining Global Functions
+
+notes=$1
+
+if [ -z "$notes" ]; then
+    echo "Usage: fix-notes <notes-dir>"
+    exit 1
+fi
+
+echo "Running fix link on $notes"
+
+# confirm
+read -p "Are you sure? [Y/n]" -n 1 -r
+
+find "$notes" -name "*.md" -exec sed -i 's/\[\](\(.*\))\(.*\)/[\2](\1)/g' {} \;
+
+# add code lang to code blocks
+# run nvim headless with :s command
+
+nvim -c "argdo %s/\`\`\`\n#/\`\`\`ocaml\r\#/g | update" $notes/*.md
