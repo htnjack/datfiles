@@ -7,14 +7,14 @@ local _M = {}
 -- Associative Array (Hash)
 
 _M = {
-    bg_darkest  = '#2c2e34',
+    bg_darkest  = '#1a1c22',
     bg_dark     = '#2c2e34',
     bg_light    = '#c489b3',
     bg_lightest = '#efaed4',
     fg_lightest = '#c8ccd4',
     fg_light    = '#d8dce4',
     fg_dark     = '#2c2e34',
-    fg_darkest  = '#2c2e34',
+    fg_darkest  = '#1a1c22',
     black       = '#2c2e34',
     red         = '#ff6b6b',
     green       = '#8abeb7',

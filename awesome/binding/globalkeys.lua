@@ -19,43 +19,43 @@ local _M = {}
 
 function _M.get()
     local globalkeys = gears.table.join(
-        awful.key({ modkey, }, "s", hotkeys_popup.show_help,
+    -- group - awesome
+        awful.key({ modkey, }, "Home", hotkeys_popup.show_help,
             { description = "show help", group = "awesome" }),
 
-        --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-        -- Tag browsing
-        awful.key({ modkey, }, "Left", awful.tag.viewprev,
+        -- group - tag
+        awful.key({ modkey, }, "n", awful.tag.viewprev,
             { description = "view previous", group = "tag" }),
-        awful.key({ modkey, }, "Right", awful.tag.viewnext,
+        awful.key({ modkey, }, "p", awful.tag.viewnext,
             { description = "view next", group = "tag" }),
         awful.key({ modkey, }, "Escape", awful.tag.history.restore,
             { description = "go back", group = "tag" }),
 
+        -- group - client/nav
         awful.key({ modkey, }, "j",
             function()
                 awful.client.focus.byidx(1)
             end,
-            { description = "focus next by index", group = "client" }
+            { description = "focus next by index", group = "focus" }
         ),
         awful.key({ modkey, }, "k",
             function()
                 awful.client.focus.byidx(-1)
             end,
-            { description = "focus previous by index", group = "client" }
+            { description = "focus previous by index", group = "focus" }
         ),
 
-        --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-        -- Layout manipulation
+        -- group - client-layout
         awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx(1) end,
-            { description = "swap with next client by index", group = "client" }),
+            { description = "swap with next client by index", group = "nav-client" }),
         awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx(-1) end,
-            { description = "swap with previous client by index", group = "client" }),
+            { description = "swap with previous client by index", group = "nav-client" }),
         awful.key({ modkey, "Control" }, "j", function() awful.screen.focus_relative(1) end,
-            { description = "focus the next screen", group = "screen" }),
+            { description = "focus the next screen", group = "nav-screen" }),
         awful.key({ modkey, "Control" }, "k", function() awful.screen.focus_relative(-1) end,
-            { description = "focus the previous screen", group = "screen" }),
+            { description = "focus the previous screen", group = "nav-screen" }),
         awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
-            { description = "jump to urgent client", group = "client" }),
+            { description = "jump to urgent client", group = "nav-client" }),
         awful.key({ modkey, }, "Tab",
             function()
                 awful.client.focus.history.previous()
@@ -63,12 +63,12 @@ function _M.get()
                     client.focus:raise()
                 end
             end,
-            { description = "go back", group = "client" }),
+            { description = "go back", group = "nav-client" }),
 
         --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         -- Standard program
         awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end,
-            { description = "open a terminal", group = "launcher" }),
+            { description = "open a terminal", group = "awesome" }),
         awful.key({ modkey, "Shift" }, "r", awesome.restart,
             { description = "reload awesome", group = "awesome" }),
         awful.key({ modkey, "Shift" }, "q", awesome.quit,
@@ -93,65 +93,61 @@ function _M.get()
         awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc(-1) end,
             { description = "select previous", group = "layout" }),
 
-        awful.key({ modkey, "Control" }, "n",
-            function()
-                local c = awful.client.restore()
-                -- Focus restored client
-                if c then
-                    c:emit_signal(
-                        "request::activate", "key.unminimize", { raise = true }
-                    )
-                end
-            end,
-            { description = "restore minimized", group = "client" }),
+        -- awful.key({ modkey, "Control" }, "n",
+        --     function()
+        --         local c = awful.client.restore()
+        --         -- Focus restored client
+        --         if c then
+        --             c:emit_signal(
+        --                 "request::activate", "key.unminimize", { raise = true }
+        --             )
+        --         end
+        --     end,
+        --     { description = "restore minimized", group = "client" }),
 
-        --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-        -- Prompt
-        awful.key({ modkey, "Shift" }, "s", function() awful.spawn("/home/jack/bin/snip") end,
-            { description = "rofi windows menu", group = "rofi" }),
-        awful.key({ modkey }, "w", function() awful.spawn("rofi -show window") end,
-            { description = "rofi windows menu", group = "rofi" }),
-        awful.key({ modkey }, "r", function() awful.spawn("rofi -show run") end,
-            { description = "rofi run menu", group = "rofi" }),
+        -- awful.key({ modkey, "Shift" }, "s", function() awful.spawn("/home/jack/bin/snip") end,
+        --     { description = "snip", group = "custom" }),
+        awful.key({ modkey }, "r", function() awful.spawn("rofi -show combi") end,
+            { description = "rofi run menu", group = "custom" })
 
-        awful.key({ modkey }, "x",
-            function()
-                awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                }
-            end,
-            { description = "lua execute prompt", group = "awesome" }),
+        -- awful.key({ modkey }, "x",
+        --     function()
+        --         awful.prompt.run {
+        --             prompt       = "Run Lua code: ",
+        --             textbox      = awful.screen.focused().mypromptbox.widget,
+        --             exe_callback = awful.util.eval,
+        --             history_path = awful.util.get_cache_dir() .. "/history_eval"
+        --         }
+        --     end,
+        --     { description = "lua execute prompt", group = "awesome" }),
 
         --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         -- Resize
         --awful.key({ modkey, "Control" }, "Left",  function () awful.client.moveresize( 20,  20, -40, -40) end),
         --awful.key({ modkey, "Control" }, "Right", function () awful.client.moveresize(-20, -20,  40,  40) end),
-        awful.key({ modkey, "Control" }, "Down",
-            function() awful.client.moveresize(0, 0, 0, -20) end),
-        awful.key({ modkey, "Control" }, "Up",
-            function() awful.client.moveresize(0, 0, 0, 20) end),
-        awful.key({ modkey, "Control" }, "Left",
-            function() awful.client.moveresize(0, 0, -20, 0) end),
-        awful.key({ modkey, "Control" }, "Right",
-            function() awful.client.moveresize(0, 0, 20, 0) end),
-
-        -- Move
-        awful.key({ modkey, "Shift" }, "Down",
-            function() awful.client.moveresize(0, 20, 0, 0) end),
-        awful.key({ modkey, "Shift" }, "Up",
-            function() awful.client.moveresize(0, -20, 0, 0) end),
-        awful.key({ modkey, "Shift" }, "Left",
-            function() awful.client.moveresize(-20, 0, 0, 0) end),
-        awful.key({ modkey, "Shift" }, "Right",
-            function() awful.client.moveresize(20, 0, 0, 0) end),
+        -- awful.key({ modkey, "Control" }, "Down",
+        --     function() awful.client.moveresize(0, 0, 0, -20) end),
+        -- awful.key({ modkey, "Control" }, "Up",
+        --     function() awful.client.moveresize(0, 0, 0, 20) end),
+        -- awful.key({ modkey, "Control" }, "Left",
+        --     function() awful.client.moveresize(0, 0, -20, 0) end),
+        -- awful.key({ modkey, "Control" }, "Right",
+        --     function() awful.client.moveresize(0, 0, 20, 0) end),
+        --
+        -- -- Move
+        -- awful.key({ modkey, "Shift" }, "Down",
+        --     function() awful.client.moveresize(0, 20, 0, 0) end),
+        -- awful.key({ modkey, "Shift" }, "Up",
+        --     function() awful.client.moveresize(0, -20, 0, 0) end),
+        -- awful.key({ modkey, "Shift" }, "Left",
+        --     function() awful.client.moveresize(-20, 0, 0, 0) end),
+        -- awful.key({ modkey, "Shift" }, "Right",
+        --     function() awful.client.moveresize(20, 0, 0, 0) end),
 
         --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         -- Menubar
-        awful.key({ modkey }, "p", function() menubar.show() end,
-            { description = "show the menubar", group = "launcher" })
+        -- awful.key({ modkey }, "p", function() menubar.show() end,
+        --     { description = "show the menubar", group = "launcher" })
 
     )
 
