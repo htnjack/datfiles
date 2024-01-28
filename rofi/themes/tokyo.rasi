@@ -1,0 +1,97 @@
+* {
+  font: "IosevkaTerm Nerd Font Mono 24";
+
+  bg0     : #1a1c22;
+  bg1     : #2c2e43;
+  bg2     : #dacbe4;
+  bg3     : #efaed4;
+  fg0     : #c8ccd4;
+  fg1     : #c489b3;
+  fg2     : #1a1c22;
+  red     : #ff6b6b;
+  green   : #8abeb7;
+  yellow  : #f0c674;
+  blue    : #81a2be;
+  magenta : #ae95c7;
+  cyan    : #8abeb7;
+
+  accent: @magenta;
+  urgent: @yellow;
+
+  background-color : transparent;
+  text-color       : @fg0;
+
+  margin  : 0;
+  padding : 0;
+  spacing : 0;
+}
+
+element-icon, element-text, scrollbar {
+  cursor: pointer;
+}
+
+window {
+  location : north;
+  width    : 50%;
+  y-offset : 1%;
+
+  background-color: @bg1;
+  border: 1px;
+  border-color: @magenta;
+  border-radius: 2px;
+}
+
+inputbar {
+  /*  */
+  spacing  : 8px;
+  padding  : 4px 8px;
+  children : [ icon-search, entry ];
+  background-color: @bg1;
+}
+
+listview {
+  padding      : 4px 0px;
+  lines        : 12;
+  columns      : 1;
+  scrollbar    : true;
+  fixed-height : false;
+  dynamic      : true;
+}
+
+element {
+  padding : 4px 8px;
+  spacing : 8px;
+}
+
+element normal urgent {
+  text-color: @urgent;
+}
+
+element normal active {
+  text-color: @accent;
+}
+
+element selected {
+  text-color       : @bg1;
+  background-color : @accent;
+}
+
+element selected urgent {
+  background-color: @urgent;
+}
+
+element-icon {
+  size: 0.8em;
+}
+
+element-text {
+  text-color: inherit;
+}
+
+scrollbar {
+  handle-width : 4px;
+  handle-color : @magenta;
+  padding      : 0 4px;
+}
+
+/* vim:ft=css
