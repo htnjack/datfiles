@@ -11,13 +11,13 @@ NRC = {
     terminal = "alacritty",
     modkey = "Mod4",
     theme = {
-        name = "pinkmare",
-        wallpaper = "wallpaper.png",
+        name = "hare",
+        wallpaper = "palms-pink.png",
     },
     tags = { "", "󰾔", "", "⭘", "⭘", "⭘", "⭘", "⭘", "⭘" },
 }
 
-beautiful.init(home .. "/.config/awesome/themes/" .. NRC.theme.name .. "/theme.lua")
+beautiful.init(home .. "/.config/awesome/theme/" .. NRC.theme.name .. ".lua")
 
 local layouts = {
     awful.layout.suit.spiral,

@@ -2,8 +2,6 @@ local gears            = require("gears")
 local awful            = require("awful")
 local wibox            = require("wibox")
 
-wallpaper              = require("deco.wallpaper")
-
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 local clock_widget     = require("widgets.clock")
@@ -12,9 +10,6 @@ local battery_widget   = require("widgets.battery")
 
 
 awful.screen.connect_for_each_screen(function(s)
-    -- Wallpaper
-    wallpaper.set(s)
-
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
 
