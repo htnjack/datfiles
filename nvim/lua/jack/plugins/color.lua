@@ -1,4 +1,3 @@
-local a = 123;
 return {
     'tjdevries/colorbuddy.nvim',
 

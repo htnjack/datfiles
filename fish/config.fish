@@ -16,10 +16,18 @@ else
 	abbr -a lll 'ls -la'
 end
 
+abbr -a crgn 'ssh jack@carogna'
+
 bind \cf "tmux-sessionizer"
 
-pyenv init - | source
-pyenv virtualenv-init - | source
+if command -v pyenv > /dev/null
+    pyenv init - | source
+    pyenv virtualenv-init - | source
+end
 
 # opam configuration
 source /home/jack/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+abbr -a d dune
+
+set -x GOPATH (go env GOPATH)
+set -x PATH $PATH (go env GOPATH)/bin

@@ -27,7 +27,7 @@ return {
         'hrsh7th/nvim-cmp',
         'L3MON4D3/LuaSnip',
         'saadparwaiz1/cmp_luasnip',
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         "nvim-lua/plenary.nvim",
         'github/copilot.vim',
     },
@@ -43,9 +43,18 @@ return {
             },
             handlers = {
                 function(server_name)
+                    require('lspconfig.ui.windows').default_options = {
+                        border = "single",
+                    }
                     require("lspconfig")[server_name].setup({ capabilities = capabilities, on_attach = on_attach })
                 end,
                 ["ocamllsp"] = function()
+                    local null_ls = require("null-ls")
+                    null_ls.setup({
+                        sources = {
+                            null_ls.builtins.formatting.ocamlformat,
+                        }
+                    })
                     require("lspconfig").ocamllsp.setup({
                         on_attach = on_attach,
                         capabilities = capabilities,
@@ -59,7 +68,7 @@ return {
                     require("lspconfig").html.setup({
                         on_attach = on_attach,
                         capabilities = capabilities,
-                        filetypes = { "html", "templ" },
+                        filetypes = { "html", "templ", "ocaml"},
                     })
                 end,
                 ["html"] = function()
