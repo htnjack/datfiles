@@ -2,12 +2,11 @@ local gears            = require("gears")
 local awful            = require("awful")
 local wibox            = require("wibox")
 
--- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-
 local clock_widget     = require("widgets.clock")
 local separator_widget = require("widgets.separator")
 local battery_widget   = require("widgets.battery")
 
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 awful.screen.connect_for_each_screen(function(s)
     -- Create a promptbox for each screen
@@ -26,7 +25,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen = s,
-        filter = awful.widget.taglist.filter.all,
+        filter = awful.widget.taglist.filter.noempty,
     }
 
     -- Create a tasklist widget
