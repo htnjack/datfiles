@@ -7,8 +7,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local menubar = require("menubar")
 
 -- Resource Configuration
-local modkey = RC.vars.modkey
-local terminal = RC.vars.terminal
+local modkey = NRC.modkey
+local terminal = NRC.terminal
 
 local _M = {}
 
