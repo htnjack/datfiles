@@ -1,0 +1,30 @@
+#!/bin/bash
+
+url=http://celestrak.org
+
+articles=(
+    "$url/columns/v01n01/"
+    "$url/columns/v01n04/"
+    "$url/columns/v01n05/"
+    "$url/columns/v01n06/"
+    "$url/columns/v02n01/"
+    "$url/columns/v02n02/"
+    "$url/columns/v02n03/"
+    "$url/columns/v02n04/"
+    "$url/columns/v02n05/"
+    "$url/columns/v03n01/"
+    "$url/columns/v03n02/"
+    "$url/columns/v03n03/"
+    "$url/columns/v03n04/"
+    "$url/columns/v03n06/"
+    "$url/columns/v04n01/"
+    "$url/columns/v04n03/"
+    "$url/columns/v04n05/"
+    "$url/columns/v04n07/"
+    "$url/columns/v04n09/"
+)
+
+for ((i=0; i<${#articles[@]}; i+=1)); do
+    curl -s ${articles[i]} >> art_1.html
+    sleep 3
+done
