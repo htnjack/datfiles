@@ -60,12 +60,12 @@ theme.taglist_fg_empty    = colors.fg_lightest
 theme.taglist_bg_focus    = colors.blue
 theme.taglist_fg_focus    = colors.fg_dark
 
--- theme.tooltip_font         = "Iosevka NF 8"
--- theme.tooltip_opacity      = 0.9
--- theme.tooltip_fg_color     = gmc.white
--- theme.tooltip_bg_color     = gmc.red
--- theme.tooltip_border_width = dpi(2)
--- theme.tooltip_border_color = gmc.bg2
+theme.tooltip_font         = "Iosevka NF 8"
+theme.tooltip_opacity      = 0.9
+theme.tooltip_fg_color     = colors.fg_lightest
+theme.tooltip_bg_color     = colors.red
+theme.tooltip_border_width = dpi(2)
+theme.tooltip_border_color = colors.bg_dark
 
 -- dofile(theme_path .. "elements.lua")
 -- dofile(theme_path .. "layouts.lua")

@@ -3,6 +3,7 @@ set fish_greeting
 abbr -a fsc nvim ~/.config/fish/config.fish
 abbr -a c cargo
 abbr -a g git
+abbr -a gu gitui
 abbr -a e nvim
 
 if command -v exa > /dev/null

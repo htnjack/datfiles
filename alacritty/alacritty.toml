@@ -20,7 +20,7 @@ style = "Regular"
 # y = 1
 
 [shell]
-program = "/bin/fish"
+program = "/bin/bash"
 
 [window]
 opacity = 0.9

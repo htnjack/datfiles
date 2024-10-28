@@ -42,6 +42,24 @@ return {
                 'lua_ls', 'rust_analyzer', 'pyright', 'html', 'gopls', 'html', 'htmx', 'ocamllsp', 'vimls', 'yamlls',
             },
             handlers = {
+                ["yamlls"] = function()
+                    local null_ls = require("null-ls")
+                    null_ls.setup({
+                        sources = {
+                            null_ls.builtins.formatting.prettier.with({
+                                filetypes = { "yaml" },
+                            }),
+                        }
+                    })
+                    require("lspconfig").ocamllsp.setup({
+                        on_attach = on_attach,
+                        capabilities = capabilities,
+                        filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
+                        get_language_id = function(_, ftype)
+                            return ftype
+                        end,
+                    })
+                end,
                 function(server_name)
                     require('lspconfig.ui.windows').default_options = {
                         border = "single",

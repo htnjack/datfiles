@@ -1,0 +1,61 @@
+[core]
+    editor = nvim
+[user]
+	email = htnjack@proton.me
+	name = Jack
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
+[core]
+    pager = delta
+[pager]
+    log = true
+[commit]
+    verbose = true
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    features = decorations
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    ; hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
+
+[alias]
+	co = checkout
+	br = branch
+	merged = branch --merged
+	st = status
+	aa = add -A .
+	cm = commit -m
+	cc = commit
+	aacm = !git add -A . && git commit
+	aacm = !git add -A . && git commit -m
+	amend = commit --amend -m
+	dev = !git checkout dev && git pull origin dev
+	staging = !git checkout staging && git pull origin staging
+	main = !git checkout main && git pull origin 
+	master = !git checkout master && git pull origin 
+	po = push origin
+	pu = !git push origin `git branch --show-current`
+	pl = pull origin
+	unstage = restore --staged .
+    lg = log --oneline
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	f = "!git ls-files | grep -i"
+	gr = grep -Ii
+	la = "!git config -l | grep alias | cut -c 7-"
+[init]
+	defaultBranch = main

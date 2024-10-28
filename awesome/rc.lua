@@ -3,7 +3,8 @@ pcall(require, "luarocks.loader")
 local awful = require("awful")
 local beautiful = require("beautiful")
 
-local home = os.getenv("HOME")
+local naughty = require("naughty")
+local config = awful.util.getdir("config")
 
 require('awful.autofocus')
 
@@ -14,18 +15,29 @@ NRC = {
         name = "hare",
         wallpaper = "palms-pink.png",
     },
-    tags = { "", "󰾔", "", "⭘", "⭘", "⭘", "⭘", "⭘", "⭘" },
+    tags = { "", "󰈹", "", "⭘", "⭘", "⭘", "⭘", "⭘", "󰓇" },
 }
 
-beautiful.init(home .. "/.config/awesome/theme/" .. NRC.theme.name .. ".lua")
+beautiful.init(config .. "/theme/" .. NRC.theme.name .. ".lua")
+beautiful.wallpaper = config .. "/theme/" .. NRC.theme.wallpaper
+
+local w = require("utils.wallpaper")
+awful.screen.connect_for_each_screen(function(s)
+    w.set(s)
+end)
+
+screen.connect_signal("property::geometry", w.set)
+
+-- Enable sloppy focus, so that focus follows mouse.
+client.connect_signal("mouse::enter", function(c)
+    c:emit_signal("request::activate", "mouse_enter", {raise = false})
+end)
+client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 local layouts = {
-    awful.layout.suit.spiral,
     awful.layout.suit.max,
-    awful.layout.suit.floating,
-    awful.layout.suit.fair
 }
--- Needed for some reason
 local tags = {}
 awful.screen.connect_for_each_screen(function(s)
     -- Each screen has its own tag table.
